@@ -1,0 +1,8 @@
+---
+namespace: sample-ns
+resources:
+  - namespace.yaml
+  - chartmuseum-secret.yaml
+  - chartmuseum-release.yaml
+  - artifactory-release.yaml
+

@@ -1,0 +1,23 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: chartmuseum
+spec:
+  releaseName: chartmuseum
+  forceUpgrade: false
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: chartmuseum
+    version: 2.12.0
+  values:
+    service:
+      type: LoadBalancer
+    env:
+      open:
+        DISABLE_API: false
+        AUTH_ANONYMOUS_GET: true
+      existingSecret: chartmuseum-secret
+      existingSecretMappings:
+        BASIC_AUTH_USER: CHART_MUSEUM_USER
+        BASIC_AUTH_PASS: CHART_MUSEUM_PASSWORD
